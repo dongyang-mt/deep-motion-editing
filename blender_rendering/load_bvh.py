@@ -130,7 +130,7 @@ def set_animation(file, joints):
     bpy.context.scene.frame_start = 0
     bpy.context.scene.frame_end = file.anim.rotations.shape[0] - 1
 
-    bpy.context.scene.render.fps = 1 / file.frametime
+    bpy.context.scene.render.fps = int(1 / file.frametime)
 
     bpy.ops.object.select_all(action='DESELECT')
 
