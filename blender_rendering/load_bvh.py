@@ -134,7 +134,7 @@ def set_animation(file, joints):
 
     bpy.ops.object.select_all(action='DESELECT')
 
-    print('Set fps to', bpy.context.scene.render.fps)
+    print('Set fps to', bpy.context.scene.render.fps, " file.frametime:", file.frametime)
     print(file.frame_num, 'frames in total')
 
     for frame in range(0, file.frame_num):

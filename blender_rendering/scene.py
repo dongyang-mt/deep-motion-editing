@@ -31,16 +31,16 @@ def add_light(location):
 
 def make_scene(floor_size=1000, camera_position=(37.54, -28.87, 16.34), camera_rotation=(1.30473, 0.0109881, 0.896417),
                light_position=(0, 0, 20)):
-    floor = add_floor(floor_size)
+    # floor = add_floor(floor_size)
     camera = add_camera(camera_position, camera_rotation)
     light = add_light(light_position)
     bpy.ops.object.select_all(action='DESELECT')
-    floor.select_set(True)
+    # floor.select_set(True)
     camera.select_set(True)
     light.select_set(True)
     bpy.ops.object.move_to_collection(collection_index=0, is_new=True, new_collection_name="Scene")
     bpy.ops.object.select_all(action='DESELECT')
-    return [floor, camera, light]
+    return [camera, light]
 
 
 def add_rendering_parameters(scene, args, camera):

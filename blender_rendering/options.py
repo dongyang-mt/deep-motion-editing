@@ -19,13 +19,14 @@ class Options:
         self.args = self.parser.parse_args(self.argv)
 
     def initialize(self):
-        self.parser.add_argument('--bvh_path', type=str, default='./example.bvh', help='path of input bvh file')
+        # self.parser.add_argument('--bvh_path', type=str, default='./example.bvh', help='path of input bvh file')
+        self.parser.add_argument('--bvh_path', type=str, default='/home/dongyang/code/neural-blend-shapes/demo_greeting_smpl/skeleton.bvh', help='path of input bvh file')
         self.parser.add_argument('--save_path', type=str, default='./results/', help='path of output video file')
-        self.parser.add_argument('--render_engine', type=str, default='cycles',
+        self.parser.add_argument('--render_engine', type=str, default='eevee',
                                  help='name of preferable render engine: cycles, eevee')
         self.parser.add_argument('--render', action='store_true', default=False, help='render an output video')
         # rendering parameters
-        self.parser.add_argument('--frame_end', type=int, default=100, help='the index of the last rendered frame')
+        self.parser.add_argument('--frame_end', type=int, default=157, help='the index of the last rendered frame')
         self.parser.add_argument('--resX', type=int, default=960, help='x resolution')
         self.parser.add_argument('--resY', type=int, default=540, help='y resolution')
 
