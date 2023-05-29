@@ -51,7 +51,7 @@ def extract_weight(me):
     vgrps = me.vertex_groups
 
     weight = np.zeros((len(verts), len(vgrps)))
-    mask = np.zeros(weight.shape, dtype=np.int)
+    mask = np.zeros(weight.shape, dtype=np.int64)
     vgrp_label = vgrps.keys()
 
     for i, vert in enumerate(verts):
@@ -59,7 +59,6 @@ def extract_weight(me):
             j = g.group
             weight[i, j] = g.weight
             mask[i, j] = 1
-
     return weight, vgrp_label, mask
 
 
@@ -157,6 +156,10 @@ def main():
 
     for me in meshes:
         weight, label, _ = extract_weight(me)
+        print("skinning_weight.shape:", weight.shape)
+        print("len(label):", len(label))
+        print("label:", label)
+        np.savez(args.fbx_file + "_skinning_weight.npz", lbs_weights=weight)
         weight = adapt_weight(weight, label, source_arm, dest_arm)
         load_weight(me, dest_arm.data.bones.keys(), weight)
         set_modifier(me, dest_arm)

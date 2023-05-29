@@ -189,6 +189,9 @@ render: 0 or 1. If set to 1, the data will be rendered outside blender's GUI. It
 
 The full parameters list can be displayed by:
 `blender -P render.py -- -h`
+```
+blender -b -P render.py -- --render
+```
 
 #### Load bvh File (`load_bvh.py`)
 
@@ -231,7 +234,8 @@ Eevee (left) is a fast, real-time, render engine provides limited quality, while
 We provide a blender script that applies "skinning" to the output skeletons. You first need to download the fbx file which corresponds to the targeted character (for example, "[mousey](https://www.mixamo.com/#/?page=1&query=mousey&type=Character)"). Then, you can get a skinned animation by simply run
 
 ```sh
-blender -P blender_rendering/skinning.py -- --bvh_file [bvh file path] --fbx_file [fbx file path]
+blender -P blender_rendering/skinning.py -- --bvh_file blender_rendering/example.bvh --fbx_file blender_rendering/Ch14_nonPBR.fbx
+blender -b -P blender_rendering/skinning.py -- --fbx_file=blender_rendering/Ch14_nonPBR.fbx --bvh_file=blender_rendering/example.bvh
 ```
 
 Note that the script might not work well for all the fbx and bvh files. If it fails, you can try to tweak the script or follow the manual skinning guideline below.
